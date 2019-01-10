@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="edge" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+		<meta name="description" content="这是一个 index 页面">
+		<meta name="keywords" content="index">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mCustomScrollbar.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3FBGw7GGBfhzG9YjzwKsZDZSjC5sQQmT"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+		<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+		<script src="js/echarts.common.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mapStyle.js" type="text/javascript" charset="utf-8"></script>
+
+		<style>
+			body {
+				color: #15fbf6;
+			}
+			
+			.am-panel-hd {
+				background: linear-gradient(to bottom, #042056, #060652, #000004);
+				color: #15fbf6;
+				line-height: 1.6;
+				padding-left: 2vh;
+				display: flex;
+				align-items: center;
+			}
+			
+			.am-panel-bd {
+				background: linear-gradient(to bottom, #042056, #060652, #0c0c54);
+			}
+			
+			.am-comments-list.admin-content-comment li {
+				background: linear-gradient(to right, #0d3482, #0d0d84, #17179e);
+				margin: 2vh;
+				padding: 2vh;
+			}
+			
+			.mCS-light-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+				background: #02b4df;
+				width: 5px;
+			}
+			
+			#mCSB_1_container .am-comment-avatar {
+				float: left;
+				width: 38px;
+				height: 38px;
+				border-radius: 50%;
+				border: 1px solid transparent;
+				margin-left: 10px;
+				margin-top: 15px;
+			}
+			
+			.am-comments-list.admin-content-comment li .am-comment-main {
+				position: relative;
+				margin-left: 63px;
+			}
+			
+			.mCSB_inside>.mCSB_container {
+				margin-right: 10px;
+			}
+			
+			#collapse-panel-4 {
+				padding: 2vh;
+			}
+			
+			.am-comment-main p {
+				line-height: 25px;
+			}
+			
+			#collapse-panel-4 p {
+				line-height: 30px;
+			}
+			
+			.am-comment-main p .linchuang,
+			.am-comment-main p .putong {
+				float: right;
+				padding: 2px 5px;
+				border: 1px solid;
+				border-radius: 4px;
+			}
+			
+			.am-comment-main p .linchuang {
+				border-color: #f1a758;
+				color: #f1a758;
+			}
+			
+			.am-comment-main p .putong {
+				border-color: #58e4f1;
+				color: #58e4f1;
+			}
+			
+			.BMap_cpyCtrl {
+				display: none;
+			}
+			
+			.anchorBL {
+				display: none;
+			}
+			
+			.BMap_bubble_content {
+				width: 340px!important;
+				border: none;
+			}
+			
+			#collapse-panel-43 .BMapLabel {
+				color: #13b777;
+			}
+			
+			#collapse-panel-44 .BMapLabel {
+				color: #3050c7;
+			}
+			
+			.BMapLabel {
+				background-color: transparent !important;
+				border: none!important;
+				font-weight: 700!important;
+			}
+			
+			.show {
+				display: block;
+			}
+			
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ice-container">
+			<div class="ice-layout ice-layout" style="min-height: 100vh;">
+				<div class="home">
+					<div style="background: linear-gradient(to bottom,#043494,#0c0ca0,#060661);position: relative;height: 100vh;overflow:hidden;">
+						<div style="padding:0 2vh; display: flex; flex-direction: row; height: 100vh;">
+							<!----11111111111111111111111111111111111111111111111111-->
+							<div style="z-index: 1; width:30%s;">
+								<!-------aaaaaaaaaaaaaaaaaa----->
+								<div style="height: 16.25%;margin-bottom: 8px;display: flex;flex-direction: column;">
+									<div class="am-panel-hd am-cf" style="height: 24%;">工单数</div>
+									<div class="am-panel-bd am-collapse am-in" style="height: 76%;    background: linear-gradient(to bottom, #042056, #060652, #0c0c54)">
+										<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+											<tbody>
+												<tr>
+													<td style="padding: 0.8vh 2vh;">历史工单数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;padding-right: 2vh;">152345</td>
+													<td style="padding: 0.8vh 2vh;">上月工单数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #e4ff1e, #046613);-webkit-background-clip: text; color: transparent;">10089</td>
+												</tr>
+												<tr>
+													<td style="padding: 0.8vh 2vh;">当日工单数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text; color: transparent;padding-right: 2vh;">456</td>
+													<td style="padding: 0.8vh 2vh;">当月工单数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text; color: transparent;">12003</td>
+
+												</tr>
+												<tr>
+													<td style="padding-left: 2vh;">已完成工单</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #1ee7ff, #046613);-webkit-background-clip: text; color: transparent;padding-right: 2vh;">55</td>
+													<td style="padding: 0.8vh">实时工单数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #ff0000, #fc3333);-webkit-background-clip: text; color: transparent;">10</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+
+								</div>
+								<!----------bbbbbbbbbbbbbbbbbbbb---------------->
+								<div style="height: 40.65%;margin-bottom: 8px;display: flex;flex-direction: column;">
+									<div class="am-panel-hd am-cf" style="height: 9.59%;">实时工单 <span style="color: #ecf471;margin-left: 1rem;" id="date">9月5号</span></div>
+									<div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3" style="height: 90.41%;    background: linear-gradient(to bottom, #042056, #060652, #2b2bb1);">
+										<ul class="am-comments-list admin-content-comment" id="mCustom" style="height: 100%;">
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span>8:20 - 10:05</span>
+															<span class="linchuang">临床护理</span>
+														</p>
+														<p>服务地址:浦东新区三林镇翰城东北方向</p>
+														<p>护理员:孙二</p>
+													</div>
+												</div>
+											</li>
+
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">9:20 - 12:05</span>
+															<span style="float: right;padding: 2px 5px;" class="putong">普通照料</span>
+														</p>
+														<p>服务地址:浦东新区康梧路266号</p>
+														<p>护理员:丁一</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">9:30 - 12:05</span>
+															<span style="float: right;padding: 2px 5px;" class="putong">普通照料</span>
+														</p>
+														<p>服务地址:浦东新区唐家宅</p>
+														<p>护理员:王三</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">9:00 - 12:05</span>
+															<span style="float: right;padding: 2px 5px;" class="linchuang">临床护理</span>
+														</p>
+														<p>服务地址:浦东新区海宸假日酒店</p>
+														<p>护理员:李四</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">9:20 - 12:05</span>
+															<span style="float: right;padding: 2px 5px;" class="linchuang">临床护理</span>
+														</p>
+														<p>服务地址:浦东新区东港小学</p>
+														<p>护理员:刘林</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">8:40 - 10:05</span>
+															<span style="float: right;padding: 2px 5px;" class="putong">普通照料</span>
+														</p>
+														<p>服务地址:浦东新区顾家宅</p>
+														<p>护理员:丽丽</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">8:40 - 10:05</span>
+															<span style="float: right;padding: 2px 5px;" class="putong">普通照料</span>
+														</p>
+														<p>服务地址:浦东新区项埭村</p>
+														<p>护理员:真真</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">8:00 - 10:05</span>
+															<span style="float: right;padding: 2px 5px;" class="putong">普通照料</span>
+														</p>
+														<p>服务地址:浦东新区祝桥东港花苑三村</p>
+														<p>护理员:黎璃</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">8:40 - 10:05</span>
+															<span style="float: right;padding: 2px 5px;" class="linchuang">临床照顾</span>
+														</p>
+														<p>服务地址:浦东新区中国芯科技园</p>
+														<p>护理员:王苏</p>
+													</div>
+												</div>
+											</li>
+											<li class="am-comment">
+												<a href="#"><img src="img/svg_woman.png" alt="" class="am-comment-avatar" width="48" height="48"></a>
+												<div class="am-comment-main">
+													<div class="am-comment-bd">
+														<p style="color: #ffc98c">服务时间:<span style="font-weight: bold;padding: 4px;">8:10 - 9:45</span>
+															<span style="float: right;padding: 2px 5px;" class="putong">普通照料</span>
+														</p>
+														<p>服务地址:闵行区浦江镇沈家宅 约237米</p>
+														<p>护理员:李子</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+								<!-----------ccccccccccccccccccccc------------------------>
+								<div style="height: 40.65%;display: flex;flex-direction: column;">
+									<div class="am-panel-hd am-cf" style="height: 9.59%;">护理员 <span style="color: #ecf471;margin-left: 1rem;">45人</span></div>
+									<div id="collapse-panel-2" class="am-in am-panel-bd" style="height: 90.41%;">
+
+										<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+											<tbody>
+												<tr>
+													<td style="padding-left: 2vh;">医疗照护 <span style="font-size: 16px;font-weight: 700;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;padding-right: 2vh;">25</span> </td>
+													<td style="padding-left: 2vh;">养护员 <span style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #ece61d, #b9ad59);-webkit-background-clip: text; color: transparent;padding-right: 2vh;">15</span></td>
+													<td style="padding: 1vh;">执业护士<span style="font-size: 17px;font-weight: 700;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;padding-left:1vh;">5</span> </td>
+												</tr>
+												<tr>
+													<td colspan="3" style="padding-left: 2vh;padding-bottom: 1vh;">服务时间饱和度</td>
+												</tr>
+												<tr>
+													<td colspan="2" style="height: 6vh;padding-left: 2vh;padding-right: 2vh;padding-top: 2vh;padding-bottom: 2vh;">
+														<div class="am-progress  am-progress-sm am-active" style="width: 100%;height: 100%;border: 1px solid #777776;background: rgba(0,0,0,0.2);">
+															<div class="am-progress-bar am-progress-bar-success" style="width: 15%;height: 100%;background: yellow;"></div>
+														</div>
+													</td>
+													<td>>=70小时/周 <span style="padding-left: 10px;">15%</span></td>
+												</tr>
+												<tr>
+													<td colspan="2" style="height: 6vh;padding-left: 2vh;padding-right: 2vh;padding-top: 2vh;padding-bottom: 2vh;">
+														<div class="am-progress  am-progress-sm am-active" style="width: 100%;height: 100%;border: 1px solid #777776;background: rgba(0,0,0,0.2);">
+															<div class="am-progress-bar am-progress-bar-success" style="width: 48%;height: 100%;background: #44f421;"></div>
+														</div>
+													</td>
+													<td>>50-70小时/周 <span style="padding-left: 10px;">48%</span> </td>
+												</tr>
+												<tr>
+													<td colspan="2" style="height: 6vh;padding-left: 2vh;padding-right: 2vh;padding-top: 2vh;padding-bottom: 2vh;">
+														<div class="am-progress  am-progress-sm am-active" style="width: 100%;height: 100%;border: 1px solid #777776;background: rgba(0,0,0,0.2);">
+															<div class="am-progress-bar am-progress-bar-success" style="width: 18%;height: 100%;background: #21bbf4;"></div>
+														</div>
+													</td>
+													<td>30-50小时/周 <span style="padding-left: 10px;">18%</span></td>
+												</tr>
+												<tr>
+													<td colspan="2" style="height: 6vh;padding-left: 2vh;padding-right: 2vh;padding-top: 2vh;padding-bottom: 2vh;">
+														<div class="am-progress  am-progress-sm am-active" style="width: 100%;height: 100%;border: 1px solid #777776;background: rgba(0,0,0,0.2);">
+															<div class="am-progress-bar am-progress-bar-success" style="width: 15%;height: 100%;background: #a721f4;"></div>
+														</div>
+													</td>
+													<td>
+														<=30小时/周 <span style="padding-left: 1vh;">15%</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+
+								</div>
+							</div>
+							<!---------------22222222222222222222222222222--------------------------------->
+							<div style="flex:1 1 0%;margin-left: 2vh;margin-right: 2vh;">
+								<!-----------ddddddddddddddddddddddddd------------------------>
+								<div style="height: 16.25%;margin-bottom: 8px;">
+									<div class="am-panel-hd am-cf" style="height: 24%;">结算情况</div>
+									<div id="collapse-panel-4" class="am-panel-bd am-collapse am-in" style="height: 76%;">
+										<p>历史未结算工单数(不含上月) ：<span style="font-size: 16px;font-weight: 700;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;">300</span></p>
+										<p>上月结算工单数 ：<span style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #e4ff1e, #046613);-webkit-background-clip: text; color: transparent;">10000</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;未结算工单数：<span style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #ff0000, #fc3333);-webkit-background-clip: text; color: transparent;">80</span></p>
+									</div>
+								</div>
+								<!-----------eeeeeeeeeeeeeeeeeeeeeeeeeee------------------------>
+								<div style="height: 40.65%;margin-bottom: 8px;">
+									<div class="am-panel-hd am-cf" style="height: 9.59%;">实时服务地址图</div>
+									<div id="collapse-panel-43" class="am-panel-bd am-collapse am-in" style="height: 90.41%;">
+									</div>
+								</div>
+								<!-----------fffffffffffffffffffffffffff------------------------>
+								<div style="height: 40.65%;">
+									<div class="am-panel-hd am-cf" id="huliyuan" style="height: 9.59%;">护理员服务轨迹</div>
+									<div id="collapse-panel-44" class="am-panel-bd am-collapse am-in" style="height: 90.41%;">
+									</div>
+								</div>
+							</div>
+							<!----------333333333333333333333333333333------------------------------------------------->
+							<div style="z-index: 1; width: 30%;">
+								<!-----------ggggggggggggggggggggggggg------------------------>
+								<div style="height: 16.25%;margin-bottom: 5px;">
+									<div class="am-panel-hd am-cf" style="height: 24%;">本站老人
+										<span style="background: #0084C7;color: #49d5fe;padding:1px 10px;margin-left: 15px;border-radius: 5px 0 0 5px;">男：252</span>
+										<span style="background: #00a2ff;color: #f4f7ec;padding:1px 10px;float: right;border-radius: 0 5px 5px 0;">女：300</span>
+									</div>
+									<div class="am-in" style="height: 76%;background: linear-gradient(to bottom, #04215a, #0b1d75, #030335);">
+
+										<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+											<tbody>
+												<tr>
+													<td style="padding: 0.8vh;padding-left: 2vh;">本站老人数</td>
+													<td style="padding-right: 2vh;font-size: 16px;font-weight: 700;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text;background-clip: text; color: transparent;">552</td>
+
+													<td style="padding: 0.8vh;padding-left: 2vh;"> 本月新增老人数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text;background-clip: text; color: transparent;">89</td>
+												</tr>
+												<tr>
+													<td style="padding: 0.8vh;padding-left: 2vh;">已服务的老人数</td>
+													<td style="padding-right: 2vh;font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text;background-clip: text; color: transparent;">470</td>
+													<td style="padding: 0.8vh;padding-left: 2vh;">比上月新增老人数</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text;background-clip: text; color: transparent;">30</td>
+
+												</tr>
+												<tr>
+													<td style="padding-left: 0.8vh;padding-left: 2vh;">服务中的老人</td>
+													<td style="padding-right: 2vh;font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text;background-clip: text; color: transparent;">388</td>
+													<td style="padding-left: 1vh;">服务转化率</td>
+													<td style="font-size: 16px;font-weight: 700;background: linear-gradient(to bottom, #00e7ca, #006160);-webkit-background-clip: text; color: transparent;">70.3%</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+								<!-----------hhhhhhhhhhhhhhhhhhhhhhhhhhh------------------------>
+								<div style="height: 32.5%;margin-bottom: 5px;">
+									<div class="am-panel-hd am-cf" style="height: 12%;">老人等级统计 </div>
+									<div class="am-in" style="height: 88%;    background: linear-gradient(to bottom, #02143a, #0a0a50, #040433);">
+										<div id="main1" style="width: 60%;float: left;height: 100%;">
+
+										</div>
+										<div id="main2" style="width: 40%;float: left;height: 100%;display: flex;flex-direction: column;justify-content: center;font-weight: 700;">
+											<div class="clearfix">
+												<p style="float: left;padding: 0.8vh;background: #0e6580;text-align: center;border-radius: 50%;">
+													<span style="display: block;font-size: 1.5vh;">60-70岁</span>
+													<span style="display: block;font-size: 15px;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;">80人</span>
+												</p>
+												<p style="float:right;padding: 0.8vh;background: #1281b5;text-align: center;border-radius: 50%;">
+													<span style="display: block;font-size: 1.5vh;">71-80岁</span>
+													<span style="display: block;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;font-weight: 700;">180人</span>
+												</p>
+											</div>
+											<div class="clearfix" style="display: flex;align-items:center ;justify-content: center;border-radius: 50%;">
+												<p style="float:left;padding: 0.8vh;background: #306f57;text-align: center;border-radius: 50%;">
+													<span style="display: block;font-size: 1.5vh;">100岁以上</span>
+													<span style="display: block;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;font-weight: 700;">80人</span>
+												</p>
+
+											</div>
+											<div class="clearfix">
+												<p style="float: left;padding: 0.8vh;background: #0084C7;text-align: center;border-radius: 50%;">
+													<span style="display: block;font-size: 1.5vh;">81-90岁</span>
+													<span style="display: block;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;font-weight: 700;">190人</span>
+												</p>
+												<p style="float:right;padding: 0.8vh;background: #5e098f;text-align: center;border-radius: 50%;">
+													<span style="display: block;font-size: 1.5vh;">90-100岁</span>
+													<span style="display: block;background: linear-gradient(to right, red, #ffad00);-webkit-background-clip: text; color: transparent;font-weight: 700;">70人</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-----------lllllllllllllllllllllllllllll------------------------>
+								<div style="height: 32.5%;margin-bottom: 5px;">
+									<div class="am-panel-hd am-cf" style="height: 12%;">服务时间分布<span id="time">9月10号</span></span>
+									</div>
+									<div class="am-in" style="height: 88%;    background: linear-gradient(to bottom, #02143a, #080875, #040433);">
+										<div id="main3" class="am-in hide" style="height: 100%;background: url(./img/time.jpg) no-repeat;background-size: 95%;background-position: center right;">
+
+										</div>
+										<div id="main4" class="am-in" style="height: 100%;background: url(./img/date.jpg) no-repeat;background-size: 95%;background-position: center center;">
+
+										</div>
+									</div>
+								</div>
+								<!-----------nnnnnnnnnnnnnnnnnnnnnnnnnnnn------------------------>
+								<div style="height: 16.25%;">
+									<div class="am-panel-hd am-cf" style="height: 24%;">服务满意度</div>
+									<div class="am-in" style="height: 76%;    background: linear-gradient(to bottom, #0c275d, #080875, #040433);">
+										<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+											<tbody>
+												<tr>
+													<td style="padding: 1vh 2vh;">
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="float: left;margin-left: 10px;height: 3vh;line-height: 1.6;">95%</span>
+													</td>
+
+												</tr>
+												<tr >
+													<td style="padding: 1vh 2vh;">
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="background: url(./img/starton.png) no-repeat;float: left;width: 3vh;height: 3vh;background-size: 100% 100%; "></span>
+														<span style="float: left;margin-left: 10px;height: 3vh;line-height: 1.6;">5%</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>
+<script>
+	$("#mCustom").mCustomScrollbar({
+		theme: "light-thick"
+	})
+</script>
+<script src="js/map1.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/map2.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/leave.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/older.js" type="text/javascript" charset="utf-8"></script>
